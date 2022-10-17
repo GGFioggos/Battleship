@@ -82,7 +82,7 @@ const Gameboard = () => {
         return true;
     };
 
-    return { placeShip, receiveAttack, hasLost };
+    return { placeShip, receiveAttack, hasLost, missed };
 };
 
 export { Gameboard };
