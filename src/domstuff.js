@@ -1,4 +1,5 @@
-import { getShip } from './game';
+import { getShip, startAttackingPhase } from './game';
+import { SHIP_TYPES } from './helpers/helpers';
 
 let shipsPlaced = 0;
 let dir = 'h';
@@ -56,6 +57,21 @@ function gbclick(event, player) {
         player.gameBoard.placeShip(row, col, length, dir);
         paintBoxes(row, col, length, dir, 'placed');
         shipsPlaced++;
+        setPrompt();
+    } else if (shipsPlaced >= 5) {
+        setPrompt();
+        setTimeout(() => {
+            startAttackingPhase();
+        }, 1000);
+    }
+}
+
+function setPrompt() {
+    const prompt = document.querySelector('.info');
+    if (SHIP_TYPES[shipsPlaced]) {
+        prompt.textContent = `Place your ${SHIP_TYPES[shipsPlaced]}`;
+    } else {
+        prompt.textContent = 'Attacking stage begins!';
     }
 }
 
@@ -129,13 +145,21 @@ function paintBoxes(hoverrow, hovercol, length, dir, type) {
         gridCell.classList.remove('error');
     });
     if (dir === 'h') {
-        for (let i = hovercol; i < hovercol + length; i++) {
-            gridCells[hoverrow * 10 + i].classList.add(type);
-        }
+        paintHorizontally(hoverrow, hovercol, length, gridCells, type);
     } else {
-        for (let i = hoverrow; i < hoverrow + length; i++) {
-            gridCells[i * 10 + hovercol].classList.add(type);
-        }
+        paintVertically(hoverrow, hovercol, length, gridCells, type);
+    }
+}
+
+function paintHorizontally(row, col, length, gridCells, type) {
+    for (let i = col; i < col + length; i++) {
+        gridCells[row * 10 + i].classList.add(type);
+    }
+}
+
+function paintVertically(row, col, length, gridCells, type) {
+    for (let i = row; i < row + length; i++) {
+        gridCells[i * 10 + col].classList.add(type);
     }
 }
 
@@ -161,4 +185,11 @@ function changeDir() {
     }
 }
 
-export { renderGameBoards, initShipsPlacement, setButtonListeners };
+export {
+    renderGameBoards,
+    initShipsPlacement,
+    setButtonListeners,
+    setPrompt,
+    paintHorizontally,
+    paintVertically,
+};
