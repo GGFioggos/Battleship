@@ -17,15 +17,13 @@ const Gameboard = () => {
     const placeShip = (row, col, length, dir) => {
         let ship = Ship(length);
 
-        if (isValidPlacement(row, col, ship.length, dir)) {
-            if (dir === 'h') {
-                for (let i = col; i < col + length; i++) {
-                    board[row][i] = ship;
-                }
-            } else {
-                for (let i = row; i < row + ship.length; i++) {
-                    board[i][col] = ship;
-                }
+        if (dir === 'h') {
+            for (let i = col; i < col + length; i++) {
+                board[row][i] = ship;
+            }
+        } else {
+            for (let i = row; i < row + ship.length; i++) {
+                board[i][col] = ship;
             }
         }
     };
@@ -57,7 +55,11 @@ const Gameboard = () => {
             }
 
             for (let i = 0; i < length; i++) {
-                if (board[row + i][col] != 0) {
+                if (row + i < 10) {
+                    if (board[row + i][col] != 0) {
+                        return false;
+                    }
+                } else {
                     return false;
                 }
             }
@@ -86,7 +88,7 @@ const Gameboard = () => {
         return true;
     };
 
-    return { placeShip, receiveAttack, hasLost, missed };
+    return { placeShip, receiveAttack, hasLost, missed, isValidPlacement };
 };
 
 export { Gameboard };
