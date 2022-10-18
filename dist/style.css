@@ -1,0 +1,102 @@
+/* GENERAL */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: rgb(35, 35, 35);
+    height: 10vh;
+}
+
+.main {
+    background-color: rgb(185, 185, 185);
+    height: 85vh;
+}
+
+
+/* HEADER */
+
+.header {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header img {
+    height: 100px;
+    width: 300px;
+}
+
+/* MAIN */
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.left,.right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    width: 50vw;
+    background-color: rgb(249, 92, 92);
+}
+
+.right {
+    width: 50vw;
+    background-color: rgb(132, 255, 132);
+}
+
+.player-name {
+    position: relative;
+    bottom: 40px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.gameboard {
+    display: grid;
+    height: 50%;
+    width: 50%;
+    min-width: 400px;
+    min-height: 400px;
+}
+
+.gameboard-cell {
+    border: 1px solid black;
+}
+
+
+/* FOOTER */
+
+.footer {
+    position: absolute;
+    color: white;
+    display: flex;
+    gap: 10px;
+    font-size: 1.1rem;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    background-color: #333;
+    height: 50px;
+    width: 100%;
+}
+
+.fa-github {
+    color: white;
+    font-size: 22px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+    transform: rotate(360deg) scale(1.2);
+}
