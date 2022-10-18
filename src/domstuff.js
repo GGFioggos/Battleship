@@ -1,6 +1,7 @@
 import { getShip } from './game';
 
 let shipsPlaced = 0;
+let dir = 'h';
 
 const renderGameBoards = () => {
     const playercontainer = document.querySelector('.left .gameboard');
@@ -8,6 +9,17 @@ const renderGameBoards = () => {
 
     createGrid(playercontainer);
     createGrid(botcontainer);
+};
+
+const setButtonListeners = () => {
+    const rotateBtn = document.querySelector('.rotate');
+
+    rotateBtn.addEventListener('click', changeDir);
+    document.addEventListener('keyup', (event) => {
+        if (event.code === 'Space') {
+            changeDir();
+        }
+    });
 };
 
 const initShipsPlacement = (player) => {
@@ -36,7 +48,6 @@ function gbclick(event, player) {
     let row = Array.from(event.target.style.gridRow).slice(0, 2).join('') - 1;
     let col =
         Array.from(event.target.style.gridColumn).slice(0, 2).join('') - 1;
-    let dir = 'v';
 
     if (
         shipsPlaced < 5 &&
@@ -56,7 +67,6 @@ function previewPlacement(currShip, event, player) {
     let hovercol = parseInt(
         Array.from(event.target.style.gridColumn).slice(0, 2).join('') - 1
     );
-    let dir = 'v';
     if (player.gameBoard.isValidPlacement(hoverrow, hovercol, length, dir)) {
         paintBoxes(hoverrow, hovercol, length, dir, 'hover');
     } else {
@@ -143,4 +153,12 @@ function createGrid(container) {
     }
 }
 
-export { renderGameBoards, initShipsPlacement };
+function changeDir() {
+    if (dir === 'h') {
+        dir = 'v';
+    } else {
+        dir = 'h';
+    }
+}
+
+export { renderGameBoards, initShipsPlacement, setButtonListeners };

@@ -1,5 +1,6 @@
 import { startGame } from './game';
-import { renderGameBoards } from './domstuff';
+import { renderGameBoards, setButtonListeners } from './domstuff';
 
 startGame();
 renderGameBoards();
+setButtonListeners();
