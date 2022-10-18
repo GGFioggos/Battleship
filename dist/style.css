@@ -74,6 +74,17 @@
     border: 1px solid black;
 }
 
+.hover {
+    background-color: rgba(92, 92, 92, 0.708);
+}
+
+.placed {
+    background-color: rgb(35, 35, 35);
+}
+
+.error {
+    background-color: yellow;
+}
 
 /* FOOTER */
 

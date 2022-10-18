@@ -1,23 +1,27 @@
 {
-  "name": "battleship",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/GGFioggos/Battleship.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GGFioggos/Battleship/issues"
-  },
-  "homepage": "https://github.com/GGFioggos/Battleship#readme",
-  "devDependencies": {
-    "@babel/preset-env": "^7.19.4",
-    "jest": "^29.2.0"
-  }
+    "name": "battleship",
+    "version": "1.0.0",
+    "description": "",
+    "mode": "development",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GGFioggos/Battleship.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/GGFioggos/Battleship/issues"
+    },
+    "homepage": "https://github.com/GGFioggos/Battleship#readme",
+    "devDependencies": {
+        "@babel/preset-env": "^7.19.4",
+        "jest": "^29.2.0",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0",
+        "webpack-dev-server": "^4.11.1"
+    }
 }
