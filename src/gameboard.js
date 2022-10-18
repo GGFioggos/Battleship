@@ -88,7 +88,13 @@ const Gameboard = () => {
         return true;
     };
 
-    return { placeShip, receiveAttack, hasLost, missed, isValidPlacement };
+    return {
+        placeShip,
+        receiveAttack,
+        hasLost,
+        missed,
+        isValidPlacement,
+    };
 };
 
 export { Gameboard };
