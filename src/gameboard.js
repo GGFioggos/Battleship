@@ -70,8 +70,10 @@ const Gameboard = () => {
     const receiveAttack = (row, col) => {
         if (board[row][col] == 0) {
             missed[row][col] = 1;
+            return false;
         } else {
             board[row][col].hit();
+            return true;
         }
     };
 
