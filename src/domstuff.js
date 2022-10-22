@@ -51,18 +51,18 @@ function gbclick(event, player) {
         Array.from(event.target.style.gridColumn).slice(0, 2).join('') - 1;
 
     if (
-        shipsPlaced < 5 &&
+        shipsPlaced <= 5 &&
         player.gameBoard.isValidPlacement(row, col, length, dir)
     ) {
         player.gameBoard.placeShip(row, col, length, dir);
         paintBoxes(row, col, length, dir, 'placed');
         shipsPlaced++;
         setPrompt();
-    } else if (shipsPlaced >= 5) {
+    }
+
+    if (shipsPlaced == 5) {
         setPrompt();
-        setTimeout(() => {
-            startAttackingPhase();
-        }, 1000);
+        startAttackingPhase();
     }
 }
 
@@ -70,8 +70,6 @@ function setPrompt() {
     const prompt = document.querySelector('.info');
     if (SHIP_TYPES[shipsPlaced]) {
         prompt.textContent = `Place your ${SHIP_TYPES[shipsPlaced]}`;
-    } else {
-        prompt.textContent = 'Attacking stage begins!';
     }
 }
 
